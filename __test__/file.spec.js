@@ -34,14 +34,4 @@ describe('bitmap.js', () => {
       done();
     });
   });
-
-  // it('should make new buffer that we can access', (done) => {
-  //   file.readFile(__dirname + '/../assets/bitmap.bmp', (err, data) => {
-  //     let expected = ;
-  //     let actual = parser(data);
-  //     console.log(actual);
-  //     expect(actual).toBe(expected);
-  //     done();
-  //   });
-  // })
 });
