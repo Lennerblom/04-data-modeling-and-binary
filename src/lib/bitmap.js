@@ -11,20 +11,15 @@ module.exports = function (buffer) {
   const NUM_COLORS_OFFSET = 46;
   const COLOR_TABLE_OFFSET = 54;
   const BYTES_PER_PIXEL_OFFSET = 28;
-
-  //------------------------------------------------------
-  // READING INFORMATION FROM THE BITMAP FILE
-  //------------------------------------------------------
-  parsedBitmap.type = buffer.toString('utf-8', 0, 2);
-  parsedBitmap.fileSize = buffer.readInt32LE(FILE_SIZE_OFFSET);
-  parsedBitmap.bytesPerPixel = buffer.readInt16LE(BYTES_PER_PIXEL_OFFSET);
-  parsedBitmap.height = buffer.readInt32LE(HEIGHT_OFFSET);
-  parsedBitmap.width = buffer.readInt32LE(WIDTH_OFFSET);
-  parsedBitmap.numColors = buffer.readInt32LE(NUM_COLORS_OFFSET);
-
-  // The size of the color table is calculated by finding the number of colors first and then multiplying by 4
   let COLOR_TABLE_SIZE = parsedBitmap.numColors * 4;
-  parsedBitmap.colorTable = buffer.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_SIZE);
 
-  console.log(parsedBitmap);
+  return {
+    type: buffer.toString('utf-8', 0, 2),
+    fileSize: buffer.readInt32LE(FILE_SIZE_OFFSET),
+    bytesPerPixel: buffer.readInt16LE(BYTES_PER_PIXEL_OFFSET),
+    height: buffer.readInt32LE(HEIGHT_OFFSET),
+    width: buffer.readInt32LE(WIDTH_OFFSET),
+    numColors: buffer.readInt32LE(NUM_COLORS_OFFSET),
+    colorTable: buffer.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_SIZE),
+  };
 };
