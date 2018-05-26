@@ -5,3 +5,4 @@ const bitmapParser = require('./lib/bitmap.js'); //(BMP mapping with offsets cod
 const transformFile = require('./lib/transform.js');
 
 const transforms = ['invert', 'darken', 'border','grayscale'];
+
