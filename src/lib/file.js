@@ -4,9 +4,9 @@ const fs = require('fs');
 
 module.exports = exports = {};
 
-exports.readFile = (paths, callback) => {
+exports.readFile = (path, callback) => {
 
-  fs.readFile(paths, (err, data) => {
+  fs.readFile(path, (err, data) => {
     if(err) return callback(err);
     return callback(null, data);
   });

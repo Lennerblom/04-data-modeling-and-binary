@@ -1,6 +1,6 @@
 'use strict';
 
-const fileUtils = require('./lib/name.js');// readFile read and write file
+const fileUtils = require('./lib/file.js');// readFile read and write file
 const bitmapParser = require('./lib/bitmap.js'); //(BMP mapping with offsets code)
 const transformFile = require('./lib/transform.js');
 
