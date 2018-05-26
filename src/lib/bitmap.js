@@ -2,10 +2,6 @@
 
 module.exports = function(buffer) 
 
-const fs = require('fs');
-
-const buffer = fs.readFile(path,)
-
 const parsedBitmap = {};
 
 // Identify the offsets by reading the bitmap docs

@@ -22,6 +22,7 @@ describe('file.js', () => {
       expect(err).toBeNull();
       
       expect(data).toBeInstanceOf(Buffer);
+      console.log(data);
       done();
     });
   });
