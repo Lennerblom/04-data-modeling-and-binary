@@ -7,13 +7,14 @@ module.exports = (buffer, transform, callback) => {
 };
 let transformation = {};
 
-transformation.randomize = buffer => { 
-  let randomizer = (min, max) => {
+transformation.randomize = buffer => {
+  let crazy = (min, max) => {
     return Math.random() * (max - min) + min;
   };
-  
-  for(let i = 0; i < (buffer.colorPalette.length - 4); i = i +4) {
-    buffer.colorPalette[i] = randomizer(0, 255);
+
+  for (let i = 0; i < (buffer.colorPalette.length - 4); i = i + 4) {
+    buffer.colorPalette[i] = crazy(0, 255);
   }
+
 };
 

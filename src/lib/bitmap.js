@@ -12,6 +12,7 @@ module.exports = function (buffer) {
   const COLOR_TABLE_OFFSET = 54;
   const BYTES_PER_PIXEL_OFFSET = 28;
   let COLOR_TABLE_SIZE = parsedBitmap.numColors * 4;
+  const COLOR_TABLE_LENGTH = 256;
 
   return {
     type: buffer.toString('utf-8', 0, 2),
@@ -21,5 +22,6 @@ module.exports = function (buffer) {
     width: buffer.readInt32LE(WIDTH_OFFSET),
     numColors: buffer.readInt32LE(NUM_COLORS_OFFSET),
     colorTable: buffer.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_SIZE),
+    colorPalette: buffer.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_LENGTH),
   };
 };
