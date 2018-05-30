@@ -44,13 +44,15 @@ describe('bitmap.js', () => {
       var newPath = __dirname + '/../assets/newby.bmp';
 
       file.readFile(original, (err, data) => {
-        buffer = data;
+        changer.randomize(data);
 
-        file.writeFile(newPath, buffer, (err) => {
+
+        file.writeFile(newPath, data, (err) => {
+          expect(err).toBeNull();
           // let actual = parser(data);
-          expect(data).toBe(buffer);
+          // expect(data).toBe();
+          done();
         });
-        done();
       });
     });
   });

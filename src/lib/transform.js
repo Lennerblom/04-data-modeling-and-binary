@@ -1,10 +1,10 @@
 'use strict';
 
-module.exports = (buffer, transform, callback) => {
+// module.exports = (buffer, transform, callback) => {
 
-  transformation[transform] && transformation[transform](buffer);
-  return callback(null, buffer);
-};
+//   transformation[transform] && transformation[transform](buffer);
+//   return callback(null, buffer);
+// };
 let transformation = {};
 
 transformation.randomize = buffer => {
@@ -15,6 +15,7 @@ transformation.randomize = buffer => {
   for (let i = 0; i < (buffer.colorPalette.length - 4); i = i + 4) {
     buffer.colorPalette[i] = crazy(0, 255);
   }
-
+  
 };
 
+module.exports = transformation;
