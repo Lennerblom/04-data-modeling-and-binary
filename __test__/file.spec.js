@@ -39,16 +39,15 @@ describe('bitmap.js', () => {
   //write testing
   describe('file.js', () => {
     it('should create a new bitmap image with same values as the original', (done) => {
-      var buffer;
-      var original = __dirname + '/../assets/bitmap.bmp';
-      var newPath = __dirname + '/../assets/newby.bmp';
+      let original = __dirname + '/../assets/bitmap.bmp';
+      let newPath = __dirname + '/../assets/newby.bmp';
 
       file.readFile(original, (err, data) => {
-        buffer = data;
-
-        file.writeFile(newPath, buffer, (err) => {
-          // let actual = parser(data);
-          expect(data).toBe(buffer);
+        changer.randomize(data, (err, data));
+    
+        file.writeFile(newPath, data, (err) => {
+          expect(err).toBeNull();
+          expect(data).toBe(data);
         });
         done();
       });
@@ -57,4 +56,4 @@ describe('bitmap.js', () => {
 });
 //readFile
 //apply readFile to variable, var obj
-//writeFile(filepath, obj, randomizer)
+//writeFile(filepath, obj, randomize)
