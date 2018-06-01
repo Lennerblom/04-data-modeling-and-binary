@@ -19,5 +19,17 @@ transformation.randomize = (buffer) => {
   return buffer;
 };
 
+transformation.grayscale = buffer => {
+  let turnGray = parser(buffer).colorPalette;
+
+  for(let i = 0; i < turnGray.length; i+=4) {
+    let hex = turnGray[i];
+    turnGray[i + 2] = hex;
+    turnGray[i + 1] = hex;
+    //turnGray[i] = hex;
+  }
+  return buffer;
+};
+
 
 module.exports = transformation;
