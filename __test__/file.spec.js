@@ -40,10 +40,10 @@ describe('bitmap.js', () => {
   describe('file.js', () => {
     it('should create a new bitmap image with same values as the original', (done) => {
       let original = __dirname + '/../assets/bitmap.bmp';
-      let newPath = __dirname + '/../assets/newby.bmp';
+      let newPath = __dirname + '/../assets/grayNewby.bmp';
 
       file.readFile(original, (err, data) => {
-        changer.randomize(data, (err, data));
+        changer.grayscale(data, (err, data));
     
         file.writeFile(newPath, data, (err) => {
           expect(err).toBeNull();
