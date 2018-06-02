@@ -7,7 +7,7 @@ const changer = require('../src/lib/transform.js');
 //testing readFile
 describe('file.js', () => {
 
-  xit('should return error if invalid file path.', (done) => {
+  it('should return error if invalid file path.', (done) => {
 
     file.readFile('missing.txt', (err) => {
       expect(err).not.toBeNull();
@@ -15,7 +15,7 @@ describe('file.js', () => {
     });
   });
 
-  xit('should return file path', (done) => {
+  it('should return file path', (done) => {
     file.readFile(__dirname + '/../assets/bitmap.bmp', (err, data) => {
       expect(err).toBeNull();
       expect(data).toBeInstanceOf(Buffer);
@@ -38,7 +38,23 @@ describe('bitmap.js', () => {
 
   //write testing
   describe('file.js', () => {
-    it('should create a new bitmap image with same values as the original', (done) => {
+    it('should create a new bitmap image with a random color change.', (done) => {
+      let original = __dirname + '/../assets/bitmap.bmp';
+      let newPath = __dirname + '/../assets/Newby.bmp';
+
+      file.readFile(original, (err, data) => {
+        changer.randomize(data, (err, data));
+    
+        file.writeFile(newPath, data, (err) => {
+          expect(err).toBeNull();
+        });
+        done();
+      });
+    });
+  });
+
+  describe('file.js', () => {
+    it('should create a new bitmap image in grayscale.', (done) => {
       let original = __dirname + '/../assets/bitmap.bmp';
       let newPath = __dirname + '/../assets/grayNewby.bmp';
 
@@ -47,13 +63,38 @@ describe('bitmap.js', () => {
     
         file.writeFile(newPath, data, (err) => {
           expect(err).toBeNull();
-          expect(data).toBe(data);
         });
         done();
       });
     });
   });
+  describe('file.js', () => {
+    it('should create a new bitmap image with shades of pink.', (done) => {
+      let original = __dirname + '/../assets/bitmap.bmp';
+      let newPath = __dirname + '/../assets/pinkishNewby.bmp';
+
+      file.readFile(original, (err, data) => {
+        changer.pinkishChange(data, (err, data));
+    
+        file.writeFile(newPath, data, (err) => {
+          expect(err).toBeNull();
+        });
+        done();
+      });
+    });
+  });
+
+  it('should create a new bitmap image with shades of blue.', (done) => {
+    let original = __dirname + '/../assets/bitmap.bmp';
+    let newPath = __dirname + '/../assets/turnBlue.bmp';
+
+    file.readFile(original, (err, data) => {
+      changer.makeBlue(data, (err, data));
+  
+      file.writeFile(newPath, data, (err) => {
+        expect(err).toBeNull();
+      });
+      done();
+    });
+  });
 });
-//readFile
-//apply readFile to variable, var obj
-//writeFile(filepath, obj, randomize)
